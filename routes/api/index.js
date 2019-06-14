@@ -1,13 +1,9 @@
-const router = require('express').Router();
-const reviewsController = require('../../controllers/reviewsController');
+const router = require("express").Router();
+const reviewRoutes = require("./reviews");
+const resourceRoutes = require('./resources');
 
-router.route('/')
-    .get(reviewsController.findAll)
-    .post(reviewsController.create);
-
-router.route('/:id')
-    .get(reviewsController.findById)
-    .put(reviewsController.updateById)
-    .delete(reviewsController.deleteById);
+// Book routes
+router.use("/reviews", reviewRoutes);
+router.use('/resources', resourceRoutes);
 
 module.exports = router;
